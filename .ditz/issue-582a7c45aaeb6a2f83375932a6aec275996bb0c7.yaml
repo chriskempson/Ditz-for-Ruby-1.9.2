@@ -1,0 +1,33 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: tab completion of issues in bash
+desc: The tab completion for command names is great, it would be really nice to have tab completion for the names of tasks too.
+type: :feature
+component: ditz
+release: 
+reporter: Jon Schewe <jpschewe@mtu.net>
+status: :closed
+disposition: :fixed
+creation_time: 2011-06-06 19:44:47.907860 Z
+references: []
+
+id: 582a7c45aaeb6a2f83375932a6aec275996bb0c7
+log_events: 
+- - 2011-06-06 19:44:49.811473 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - created
+  - ""
+- - 2011-06-08 03:10:00.163078 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - issue claimed
+  - ""
+- - 2011-06-08 03:10:05.867098 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2011-06-08 03:10:50.194061 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - closed with disposition fixed
+  - Added wrapper method for die_with_completions
+git_branch: 
+claimer: Jon Schewe <jpschewe@mtu.net>
+priority: P3

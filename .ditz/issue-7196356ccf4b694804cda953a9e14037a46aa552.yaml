@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: per project css files
+desc: |-
+  Add the ability to specify a differenct css url for your project.
+  Will need to edit the project.yaml
+  should default to the old way
+type: :feature
+component: ditz
+release: "0.6"
+reporter: Matt Katz <ditz@morelightmorelight.com>
+status: :closed
+disposition: :fixed
+creation_time: 2011-09-11 18:11:40.145003 Z
+references: []
+
+id: 7196356ccf4b694804cda953a9e14037a46aa552
+log_events: 
+- - 2011-09-11 18:11:40.145599 Z
+  - Matt Katz <ditz@morelightmorelight.com>
+  - created
+  - ""
+- - 2011-09-11 18:35:19.724940 Z
+  - Matt Katz <ditz@morelightmorelight.com>
+  - closed with disposition fixed
+  - "works - just specify a url in project.yaml for css: \"style.css\" or somesuch and you'll be good to go."
+git_branch: 
+claimer: 

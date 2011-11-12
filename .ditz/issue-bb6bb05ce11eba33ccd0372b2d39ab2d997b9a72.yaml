@@ -1,0 +1,34 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: extended help for commands
+desc: |-
+  beyond just a one-line description and a usage line, 'ditz help <command>'
+  should have a longer description of what the thing actually does.
+type: :feature
+component: ditz
+release: 
+reporter: William Morgan <wmorgan-ditz@masanjin.net>
+status: :unstarted
+disposition: 
+creation_time: 2008-04-11 03:15:36.565874 Z
+references: []
+
+id: bb6bb05ce11eba33ccd0372b2d39ab2d997b9a72
+log_events: 
+- - 2008-04-11 03:15:38.357657 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - created
+  - ""
+- - 2008-07-25 00:28:34.168420 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - assigned to release 0.5 from unassigned
+  - this will integrate very nicely with {issue 3d18eaab4e6099cd38f1cdee06698564e638e87d}
+- - 2008-08-17 02:32:08.454021 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - assigned to release 0.6 from 0.5
+  - ""
+- - 2008-11-01 20:40:56.919800 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - unassigned from release 0.6
+  - ""
+git_branch: 
+claimer: 

@@ -1,0 +1,42 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: markdown/textile/redcloth support in descriptions and comments
+desc: ""
+type: :feature
+component: ditz
+release: 
+reporter: William Morgan <wmorgan-ditz@masanjin.net>
+status: :unstarted
+disposition: 
+creation_time: 2008-09-03 01:53:17.320063 Z
+references: []
+
+id: 53310ae2fbdfb553eb9189c3e33c07911289e6c5
+log_events: 
+- - 2008-09-03 01:53:17.959937 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - created
+  - ""
+- - 2008-11-08 23:34:43.447303 Z
+  - Matt Wilson <matt@tplus1.com>
+  - commented
+  - |-
+    I'm not very familiar with yaml, but it seems like yaml requires that the text for the description field, for example, starts indented two characters in.
+    
+    So, if yaml requires that indentation, then that might not play nice with some of these markup systems that depend on being in the first character in the line.
+    
+    If this is true, what about storing the description text in a separate file, and in the yaml, just storing the path to that file?
+    
+    
+    
+    (submitted via Sheila by 99.161.134.95 ())
+- - 2008-11-08 23:39:37.124039 Z
+  - Matt Wilson <matt@tplus1.com>
+  - commented
+  - |-
+    Actually, never mind.  As long as when the textile is rendered, it's pulled out and adjusted, then it can be safely stored.
+    
+    I think maybe ditz edit might be better if it broke the issue into components, and then opened each in a temp.  Or maybe there could be a ditz edit-description that just does that.
+    
+    (submitted via Sheila by 99.161.134.95 ())
+git_branch: 
+claimer: 

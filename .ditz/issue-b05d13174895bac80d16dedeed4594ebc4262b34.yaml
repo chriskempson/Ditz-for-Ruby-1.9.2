@@ -1,0 +1,26 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: issue openness/closedness/etc not checked in Operator#parse_args
+desc: |-
+  it would be better to do this here than in the individual operator
+  methods.
+type: :bugfix
+component: ditz
+release: 
+reporter: William Morgan <wmorgan-ditz@masanjin.net>
+status: :unstarted
+disposition: 
+creation_time: 2008-07-28 03:25:38.697147 Z
+references: []
+
+id: b05d13174895bac80d16dedeed4594ebc4262b34
+log_events: 
+- - 2008-07-28 03:25:39.251951 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - created
+  - ""
+- - 2008-08-17 02:31:10.342842 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - unassigned from release 0.5
+  - delaying this. not in anything's critical path.
+git_branch: 
+claimer: 

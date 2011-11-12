@@ -1,0 +1,37 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Output priority in the HTML view
+desc: ""
+type: :task
+component: issue-priority
+release: 
+reporter: Jon Schewe <jpschewe@mtu.net>
+status: :closed
+disposition: :fixed
+creation_time: 2011-06-04 02:31:04.636004 Z
+references: []
+
+id: 04621097853fd64e1aa5c76de302047ebe3ad636
+log_events: 
+- - 2011-06-04 02:31:04.636305 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - created
+  - ""
+- - 2011-06-04 03:50:11.499969 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - issue claimed
+  - ""
+- - 2011-06-04 03:52:43.600056 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2011-06-05 23:49:27.785273 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - set issue priority
+  - ""
+- - 2011-06-06 00:02:53.042945 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - closed with disposition fixed
+  - ""
+git_branch: 
+claimer: Jon Schewe <jpschewe@mtu.net>
+priority: P2

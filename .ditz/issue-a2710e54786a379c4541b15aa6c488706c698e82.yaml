@@ -1,0 +1,24 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: add progress meters
+desc: sheila should have fancy progress meters like the static HTML output does
+type: :feature
+component: sheila
+release: 
+reporter: William Morgan <wmorgan-ditz@masanjin.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-11-01 20:38:02.908993 Z
+references: []
+
+id: a2710e54786a379c4541b15aa6c488706c698e82
+log_events: 
+- - 2008-11-01 20:38:02.909494 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - created
+  - ""
+- - 2008-11-06 01:26:03.649062 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - closed with disposition fixed
+  - ""
+git_branch: 
+claimer: 

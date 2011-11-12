@@ -1,0 +1,48 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Issue fields in UTF-8 encoding are stored in uneditable format
+desc: |-
+  Steps to reproduce
+  ==================
+  
+  1.  Create an issue (via `ditz add`) with some nonASCII symbols put into any of its fields
+  2.  Run `ditz edit <issue_id>`.
+  
+  Expected behavior:
+  ==================
+  
+  All those fields are stored as I've typed them, to be readable and editable
+  
+  Actual behavior:
+  ================
+  
+  Fields contain nonASCII chars are stored as `!binary` blobs (see issue {issue 422d53615d2d3a5318cf38f9c7837c6abb83cbc0})
+  
+  Notes
+  =====
+  
+  I'd also suggest this issue should be addressed to upstream YAML implementation but I'm not sure, since I'm not using Ruby.
+type: :bugfix
+component: ditz
+release: "0.6"
+reporter: Andrei Dziahel <develop7@develop7.info>
+status: :closed
+disposition: :fixed
+creation_time: 2010-09-28 14:26:32.010919 Z
+references: []
+
+id: 9a617371b887e759c9aa3bf9c4deb8a63f8260df
+log_events: 
+- - 2010-09-28 14:26:35.755282 Z
+  - Andrei Dziahel <develop7@develop7.info>
+  - created
+  - ""
+- - 2011-03-17 22:41:21.104923 Z
+  - Matt Katz <ditz@morelightmorelight.com>
+  - assigned to release 0.6 from unassigned
+  - ""
+- - 2011-03-17 22:41:40.409853 Z
+  - Matt Katz <ditz@morelightmorelight.com>
+  - closed with disposition fixed
+  - fixed by change to yaml-waml
+git_branch: 
+claimer: 

@@ -1,0 +1,23 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: add man page
+desc: kindly contributed by christian garbs
+type: :feature
+component: ditz
+release: "0.4"
+reporter: William Morgan <wmorgan-ditz@masanjin.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-07-26 21:06:32.154006 Z
+references: []
+
+id: 72deb67e5b3e105053699f4b3755d8019ded6f03
+log_events: 
+- - 2008-07-26 21:06:35.621395 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - created
+  - ""
+- - 2008-07-26 21:40:53.820807 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - closed issue with disposition fixed
+  - ""
+git_branch: 

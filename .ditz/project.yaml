@@ -1,0 +1,47 @@
+--- !ditz.rubyforge.org,2008-03-06/project 
+name: ditz
+version: 0.0.1
+components: 
+- !ditz.rubyforge.org,2008-03-06/component 
+  name: ditz
+- !ditz.rubyforge.org,2008-03-06/component 
+  name: sheila
+- !ditz.rubyforge.org,2008-03-06/component 
+  name: issue-priority
+releases: 
+- !ditz.rubyforge.org,2008-03-06/release 
+  name: "0.4"
+  status: :released
+  release_time: 2008-07-27 21:48:29.414560 Z
+  log_events: 
+  - - 2008-06-04 20:18:27.379790 Z
+    - William Morgan <wmorgan@masanjin.net>
+    - created
+    - next major release
+  - - 2008-07-27 21:48:29.414583 Z
+    - William Morgan <wmorgan-ditz@masanjin.net>
+    - released
+    - ""
+- !ditz.rubyforge.org,2008-03-06/release 
+  name: "0.5"
+  status: :released
+  release_time: 2008-08-20 04:30:36.737180 Z
+  log_events: 
+  - - 2008-07-25 00:27:26.462978 Z
+    - William Morgan <wmorgan-ditz@masanjin.net>
+    - created
+    - ""
+  - - 2008-08-20 04:30:36.737211 Z
+    - William Morgan <wmorgan-ditz@masanjin.net>
+    - released
+    - ""
+- !ditz.rubyforge.org,2008-03-06/release 
+  name: "0.6"
+  status: :unreleased
+  release_time: 
+  log_events: 
+  - - 2008-08-17 02:10:59.574477 Z
+    - William Morgan <wmorgan-ditz@masanjin.net>
+    - created
+    - ""
+devs: 

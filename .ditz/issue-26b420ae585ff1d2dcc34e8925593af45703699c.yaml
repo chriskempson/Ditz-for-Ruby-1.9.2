@@ -1,0 +1,30 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: update hook should trigger on project.yaml as well as issue yaml files
+desc: |-
+  otherwise, releases and components changing won't ever result in a hook
+  call.
+type: :bugfix
+component: ditz
+release: "0.5"
+reporter: William Morgan <wmorgan-ditz@masanjin.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-07-27 22:07:51.979508 Z
+references: []
+
+id: 26b420ae585ff1d2dcc34e8925593af45703699c
+log_events: 
+- - 2008-07-27 22:07:52.502852 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - created
+  - ""
+- - 2008-07-28 03:21:03.631262 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - assigned to release 0.5 from unassigned
+  - ""
+- - 2008-08-20 00:54:35.002997 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - closed with disposition fixed
+  - fixed in a hacky way. created {issue 9937f07269c2918b081f9e87aa6011169a11074f} for the proper fix.
+git_branch: 
+claimer: 

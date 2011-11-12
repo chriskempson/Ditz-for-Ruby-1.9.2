@@ -1,0 +1,33 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Add priority to issues
+desc: ""
+type: :feature
+component: issue-priority
+release: "0.6"
+reporter: Jon Schewe <jpschewe@mtu.net>
+status: :closed
+disposition: :fixed
+creation_time: 2011-06-04 02:30:43.484008 Z
+references: []
+
+id: e999e72ea886261491527009d30f0a0d70dd9ef5
+log_events: 
+- - 2011-06-04 02:30:43.484330 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - created
+  - ""
+- - 2011-06-04 02:32:29.433979 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - issue claimed
+  - ""
+- - 2011-06-04 03:50:23.579064 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2011-06-04 03:51:34.537945 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - closed with disposition fixed
+  - ""
+git_branch: 
+claimer: Jon Schewe <jpschewe@mtu.net>
+priority: 

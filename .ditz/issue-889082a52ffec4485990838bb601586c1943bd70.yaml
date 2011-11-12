@@ -1,0 +1,41 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Sort issues list based on priority
+desc: The default listing of issues should be sorted by priority.
+type: :task
+component: issue-priority
+release: "0.6"
+reporter: Jon Schewe <jpschewe@mtu.net>
+status: :closed
+disposition: :fixed
+creation_time: 2011-06-04 02:31:36.843012 Z
+references: []
+
+id: 889082a52ffec4485990838bb601586c1943bd70
+log_events: 
+- - 2011-06-04 02:31:36.843313 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - created
+  - ""
+- - 2011-06-04 03:50:14.572021 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - issue claimed
+  - ""
+- - 2011-06-04 03:54:27.573946 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - assigned to release 0.6 from unassigned
+  - ""
+- - 2011-06-04 20:40:26.947966 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - set issue priority
+  - ""
+- - 2011-06-04 20:50:55.982058 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - set issue priority
+  - ""
+- - 2011-06-04 20:54:00.297932 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - closed with disposition fixed
+  - Defined sort_order in my Issue class
+git_branch: 
+claimer: Jon Schewe <jpschewe@mtu.net>
+priority: P3

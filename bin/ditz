@@ -1,0 +1,228 @@
+#! /Users/Chris/.rvm/rubies/ruby-1.9.2-p290/bin/ruby
+
+$LOAD_PATH.unshift(File.expand_path("#{File.dirname($0)}/../lib"))
+
+require 'ditz/operator'
+op = Ditz::Operator.new
+
+
+begin
+  require 'rubygems'
+  # list version dependant gems here.
+  gem 'kakutani-yaml_waml', '>= 0.3'
+  gem 'trollop', '>= 1.9'
+rescue LoadError
+end
+
+require 'fileutils'
+require 'pathname'
+require 'trollop'; include Trollop
+require "ditz"
+
+CONFIG_FN = ".ditz-config"
+PLUGIN_FN = ".ditz-plugins"
+
+config_dir = Ditz::find_dir_containing CONFIG_FN
+plugin_dir = Ditz::find_dir_containing PLUGIN_FN
+
+$opts = options do
+  version "ditz #{Ditz::VERSION}"
+  banner <<EOS
+Usage: ditz [global-opts] [command] [command-opts]
+
+See 'ditz help' for a list of commands.
+
+Global options are:
+EOS
+
+  opt :issue_dir, "Issue database dir", :type => :string
+  opt :config_file, "Configuration file", :default => File.join(config_dir || ".", CONFIG_FN)
+  opt :plugins_file, "Plugins file", :default => File.join(plugin_dir || ".", PLUGIN_FN)
+  opt :verbose, "Verbose output", :default => false
+  opt :list_hooks, "Print all hooks exit", :short => 'l', :default => false
+  opt :version, "Print version and exit", :short => :none
+  opt :commands, "Print list of commands (used for completion", :short => :none
+  stop_on_unknown
+end
+$verbose = true if $opts[:verbose]
+
+Ditz::HookManager.register :startup, <<EOS
+Executes at startup
+
+Variables: project, config
+No return value.
+EOS
+
+Ditz::HookManager.register :after_add, <<EOS
+Executes before terminating if new issue files has been created.
+Basically you want to instruct your SCM that these files has
+been added.
+
+Variables: project, config, issues
+No return value.
+EOS
+
+Ditz::HookManager.register :after_delete, <<EOS
+Executes before terminating if new issue files has been deleted.
+Basically you want to instruct your SCM that these files has
+been deleted.
+
+Variables: project, config, issues
+No return value.
+EOS
+
+Ditz::HookManager.register :after_update, <<EOS
+Executes before terminating if new issue files has been updated.
+You may want to instruct your SCM about these changes.
+Note that new issues are not considered updated.
+
+Variables: project, config, issues
+No return value.
+EOS
+
+if $opts[:list_hooks]
+  Ditz::HookManager.print_hooks
+  exit 0
+end
+
+begin
+  Ditz::load_plugins $opts[:plugins_file] if File.exist? $opts[:plugins_file]
+rescue LoadError => e
+  Ditz::debug "can't load plugins file: #{e.message}"
+end
+
+## a secret option for shell completion
+if $opts[:commands]
+  puts op.class.operations.map { |name, _| name }
+  exit
+end
+
+## prevent ctrl-c and borken pipes from printing a useless backtrace
+def die_gently
+  begin
+    yield
+  rescue Interrupt, Errno::EPIPE
+    puts
+    exit 1
+  end
+end
+
+config = begin
+  Ditz::debug "loading config from #{$opts[:config_file]}"
+  Ditz::Config.from $opts[:config_file]
+rescue SystemCallError => e
+  if ARGV.member? "<options>"
+    ## special case here. if we're asking for tab completion, and the config
+    ## file doesn't exist, don't do the interactive building. just make a
+    ## fake empty one and carry on.
+    Ditz::Config.new
+  else
+    puts <<EOS
+I wasn't able to find a configuration file #{$opts[:config_file]}.
+We'll set it up right now.
+EOS
+    die_gently { Ditz::Config.create_interactively.save! $opts[:config_file] }
+  end
+end
+
+## configure any lowline settings
+Lowline.use_editor_if_possible = config.use_editor_if_possible
+
+issue_dir = Pathname.new($opts[:issue_dir] || config.issue_dir)
+cmd = ARGV.shift || "todo"
+unless op.has_operation? cmd
+  die "no such command: #{cmd}"
+end
+
+## TODO: refactor so that three 'exit' statements aren't required
+case cmd # some special commands not handled by Ditz::Operator
+when "init"
+  die "#{issue_dir} directory already exists" if issue_dir.exist?
+  project = nil
+  die_gently { project = op.init }
+  issue_dir.mkdir
+  fn = issue_dir + Ditz::FileStorage::PROJECT_FN
+  project.save! fn
+  puts "Ok, #{issue_dir} directory created successfully."
+  exit
+when "reconfigure" # might not be able to load the project
+  die_gently { op.do cmd, nil, config, ARGV }
+  exit
+when "help"
+  begin
+    op.do cmd, nil, config, ARGV
+  rescue Ditz::Operator::Error => e
+    die "#{e.message}"
+  end
+  exit
+end
+
+$project_root = Ditz::find_dir_containing(issue_dir + Ditz::FileStorage::PROJECT_FN)
+die "No #{issue_dir} directory---use 'ditz init' to initialize" unless $project_root
+$project_root += issue_dir
+
+storage = Ditz::FileStorage.new $project_root
+project = begin
+  storage.load
+rescue SystemCallError, Ditz::Project::Error => e
+  die "#{e.message} (use 'init' to initialize)"
+end
+
+Ditz::HookManager.run :startup, project, config
+
+Ditz::debug "executing command #{cmd}"
+die_gently do
+  begin
+    op.do cmd, project, config, ARGV
+    ## TODO: make these errors have a common ancestor so that this rescue
+    ## statement isn't so stupid
+  rescue Ditz::Operator::Error, Ditz::Release::Error, Ditz::Project::Error, Ditz::Issue::Error => e
+    ## don't use 'die' here (which is Trollop::die) because this is not a
+    ## problem with the command-line arguments.
+    $stderr.puts "Error: #{e.message}"
+    exit 1
+  end
+end
+
+changed_issues = project.issues.select { |i| i.changed? }
+changed_not_added_issues = changed_issues - project.added_issues
+
+storage.save project
+
+## at this point, for compatibility with older hook stuff, we set the pathname
+## directly on the issues.
+
+project.issues.each { |i| i.pathname = storage.filename_for_issue(i) }
+unless project.added_issues.empty?
+  unless Ditz::HookManager.run :after_add, project, config, project.added_issues
+    puts "You may have to inform your SCM that the following files have been added:"
+    project.added_issues.each { |i| puts "  " + storage.filename_for_issue(i) }
+  end
+end
+
+unless project.deleted_issues.empty?
+  unless Ditz::HookManager.run :after_delete, project, config, project.deleted_issues
+    puts "You may have to inform your SCM that the following files have been deleted:"
+    project.deleted_issues.each { |i| puts "  " + storage.filename_for_issue(i) }
+  end
+end
+
+unless changed_not_added_issues.empty?
+  unless Ditz::HookManager.run :after_update, project, config, changed_not_added_issues
+    puts "You may have to inform your SCM that the following files have been modified:"
+    changed_not_added_issues.each { |i| puts "  " + storage.filename_for_issue(i) }
+  end
+end
+
+## hack upon a hack
+if project.changed?
+  project.pathname = storage.filename_for_project
+  unless Ditz::HookManager.run :after_update, project, config, [project]
+    puts "You may have to inform your SCM that the following files have been modified:"
+    puts "  " + storage.filename_for_project
+  end
+end
+
+config.save! $opts[:config_file] if config.changed?
+
+# vim: syntax=ruby

@@ -1,0 +1,27 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: hooks are run twice if a project devel root is under a home directory
+desc: need to expand_path and make sure they're not duplicates before loading
+type: :bugfix
+component: ditz
+release: "0.5"
+reporter: William Morgan <wmorgan-ditz@masanjin.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-08-04 15:24:02.505439 Z
+references: []
+
+id: 3ab6808e91625239137faa11dd95fe4b459c85ae
+log_events: 
+- - 2008-08-04 15:24:04.082252 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - created
+  - ""
+- - 2008-08-20 00:07:30.531696 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - closed with disposition fixed
+  - |-
+    replaced load with require and expanded the path name. i think that should do it.
+    
+    also did this for plugins.
+git_branch: 
+claimer: 

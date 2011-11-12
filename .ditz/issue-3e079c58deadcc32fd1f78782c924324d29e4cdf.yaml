@@ -1,0 +1,49 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: add a 'priority' plugin, for assigning priorities to issues
+desc: some people actually find this useful
+type: :feature
+component: ditz
+release: 
+reporter: William Morgan <wmorgan-ditz@masanjin.net>
+status: :closed
+disposition: :fixed
+creation_time: 2008-07-28 18:49:36.266703 Z
+references: []
+
+id: 3e079c58deadcc32fd1f78782c924324d29e4cdf
+log_events: 
+- - 2008-07-28 18:49:36.842066 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - created
+  - ""
+- - 2008-07-29 00:40:59.825805 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - assigned to release 0.5 from unassigned
+  - ""
+- - 2008-08-17 03:17:33.348614 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - assigned to release 0.6 from 0.5
+  - delaying
+- - 2008-11-01 20:40:57.906426 Z
+  - William Morgan <wmorgan-ditz@masanjin.net>
+  - unassigned from release 0.6
+  - ""
+- - 2011-06-05 23:54:52.122956 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - issue claimed
+  - Started hacking on this.
+- - 2011-06-06 00:01:03.373026 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - changed status from unstarted to in_progress
+  - ""
+- - 2011-06-06 00:01:51.523986 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - set issue priority
+  - ""
+- - 2011-06-06 00:05:55.439952 Z
+  - Jon Schewe <jpschewe@mtu.net>
+  - closed with disposition fixed
+  - I've implemented a version that does what I need. I suspect this will meet most users needs as well.
+git_branch: 
+claimer: Jon Schewe <jpschewe@mtu.net>
+priority: P1
